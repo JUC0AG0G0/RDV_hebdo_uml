@@ -6,6 +6,11 @@ import java.util.List;
 public class Table {
     private final List<Player> players = new ArrayList<>();
     private Player lastPlayer;
+    private final LastPlayedCardProviderITF lastPlayedCardProvider;
+
+    public Table(LastPlayedCardProviderITF lastPlayedCardProvider) {
+        this.lastPlayedCardProvider = lastPlayedCardProvider;
+    }
 
     public int getNumberOfPlayer() {
         return players.size();
@@ -27,5 +32,9 @@ public class Table {
 
     public int getPlayerPosition(Player p) {
         return players.indexOf(p);
+    }
+
+    public Card getLastPlayedCard() {
+        return lastPlayedCardProvider.getLastPlayedCard();
     }
 }
